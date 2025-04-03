@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberDev | Full Stack & Network Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <canvas class="matrix-bg" id="matrix"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#profile">Profile</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#social">Sosial Media</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="home">
+        <h1 class="cyber-title">CYBER_DEV</h1>
+        <p class="cyber-subtitle">// Backend Architect // Network Security // Frontend Hacker</p>
+    </header>
+
+    <!-- Profile Section (Foto Formal)
+    <section id="profile">
+        <div class="profile-photo">
+            <img src="foto.jpg" alt="Foto Formal">
+        </div>
+        <div class="profile-info">
+            <h2>Nama Anda</h2>
+            <p>Sebuah deskripsi singkat tentang latar belakang profesional dan keahlian Anda. Informasi ini akan
+                membantu pengunjung mengenal Anda secara lebih formal dan profesional.</p>
+        </div>
+    </section> -->
+
+    <!-- Recent Projects Section -->
+    <section id="projects">
+        <h2>Recent Projects</h2>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="modern-card" onclick="openModal('project1')">
+                <img src="https://via.placeholder.com/300x200" alt="Project 1">
+                <h3><i class="fas fa-laptop-code"></i> Project 1</h3>
+                <p>Deskripsi singkat Project 1 yang menarik dan modern.</p>
+                <div class="project-tags">
+                    <span class="tag"><i class="fab fa-react"></i> React</span>
+                    <span class="tag"><i class="fab fa-node-js"></i> Node.js</span>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="modern-card" onclick="openModal('project2')">
+                <img src="https://via.placeholder.com/300x200" alt="Project 2">
+                <h3><i class="fas fa-laptop-code"></i> Project 2</h3>
+                <p>Deskripsi singkat Project 2 dengan teknologi terkini.</p>
+                <div class="project-tags">
+                    <span class="tag"><i class="fab fa-angular"></i> Angular</span>
+                    <span class="tag"><i class="fab fa-python"></i> Python</span>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="modern-card" onclick="openModal('project3')">
+                <img src="https://via.placeholder.com/300x200" alt="Project 3">
+                <h3><i class="fas fa-laptop-code"></i> Project 3</h3>
+                <p>Deskripsi singkat Project 3 dengan solusi cerdas dan elegan.</p>
+                <div class="project-tags">
+                    <span class="tag"><i class="fab fa-vuejs"></i> Vue.js</span>
+                    <span class="tag"><i class="fas fa-database"></i> MySQL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social">
+        <h2>Temukan Saya di Sosial Media</h2>
+        <div>
+            <a href="https://www.linkedin.com/in/username" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+
+    <!-- Kontak Section
+    <section id="contact">
+        <h2>Kontak</h2>
+        <form id="contactForm" style="max-width: 500px; margin: auto;">
+            <input type="text" name="name" placeholder="Nama Anda" required>
+            <input type="email" name="email" placeholder="Email Anda" required>
+            <textarea name="message" placeholder="Pesan Anda" required rows="4"></textarea>
+            <button type="submit">Kirim Pesan</button>
+        </form>
+        <div id="formResponse" style="margin-top:20px;"></div>
+    </section> -->
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Back-to-Top Button -->
+    <button id="backToTop" class="hidden" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
