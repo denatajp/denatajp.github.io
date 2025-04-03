@@ -91,6 +91,33 @@ body {
     color: var(--neon-blue);
 }
 
+/* --- Mobile Adjustments --- */
+/* @media (max-width: 768px) {
+    .navbar ul {
+        flex-wrap: wrap;
+        gap: 0.75rem; // Kurangi gap agar lebih muat 
+        justify-content: center;
+    }
+    
+    .navbar ul li a {
+        font-size: 0.9rem; // Sesuaikan ukuran font
+        padding: 0.5rem 0.75rem; // Kurangi padding jika diperlukan 
+    }
+} */
+
+/* Tampilkan menu sebagai scroll horizontal di mobile */
+@media (max-width: 768px) {
+    .navbar ul {
+        overflow-x: auto; /* Aktifkan scroll horizontal */
+        white-space: nowrap; /* Pastikan item navbar tidak membungkus ke baris baru */
+        -webkit-overflow-scrolling: touch; /* Scroll yang halus di perangkat touch */
+    }
+    
+    .navbar ul li {
+        display: inline-block; /* Pastikan setiap item berada dalam satu baris */
+    }
+}
+
 /* --- Header --- */
 header {
     position: relative;
