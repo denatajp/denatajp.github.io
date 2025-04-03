@@ -113,3 +113,97 @@ document.getElementById('contactForm').addEventListener('submit', function (e) {
     formResponse.textContent = 'Your message has been sent!';
     this.reset();
 });
+
+// Tambahkan error handling
+// GitHub Feed Implementation
+async function loadGitHubRepos() {
+  const feedContainer = document.getElementById('githubFeed');
+  
+  try {
+      const response = await fetch('https://api.github.com/users/2denata/repos?sort=updated&per_page=20');
+      
+      if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      
+      let repos = await response.json();
+      
+      // Filter repo yang punya deskripsi
+      repos = repos.filter(repo => repo.description && repo.description.trim() !== '');
+      
+      // Batasi maksimal 6 repo
+      repos = repos.slice(0, 6);
+
+      if(repos.length === 0) {
+          showError('No repositories with description found');
+          return;
+      }
+
+      feedContainer.innerHTML = '';
+      
+      const grid = document.createElement('div');
+      grid.className = 'feed-grid';
+      
+      repos.forEach(repo => {
+          const card = document.createElement('div');
+          card.className = 'repo-card';
+          card.innerHTML = `
+              <img src="https://opengraph.githubassets.com/1/${repo.full_name}" 
+                   class="repo-image" 
+                   alt="${repo.name}">
+              <h3>${repo.name}</h3>
+              <p>${repo.description}</p>
+              <div class="repo-stats">
+                  <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
+                  <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
+              </div>
+              <a href="${repo.html_url}" target="_blank" class="repo-link">
+                  <i class="fab fa-github"></i> View on GitHub
+              </a>
+          `;
+          grid.appendChild(card);
+      });
+      
+      feedContainer.appendChild(grid);
+      
+  } catch (error) {
+      console.error('Error:', error);
+      feedContainer.innerHTML = `
+          <div class="matrix-error">
+              ⚠️ SYSTEM ERROR: ${error.message}
+              <div class="error-sub">Failed to connect to GitHub API</div>
+          </div>
+      `;
+  }
+}
+
+// Initialize when page loads
+window.addEventListener('DOMContentLoaded', () => {
+  loadGitHubRepos();
+  
+  // Inisialisasi efek matrix
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+  });
+});
+
+
+setTimeout(() => {
+  if(document.querySelector('.feed-loader')) {
+      showError('Connection timeout. Check internet...');
+  }
+}, 10000);
+
+// Animasi hover khusus
+document.querySelectorAll('.repo-post').forEach(post => {
+  post.addEventListener('mouseover', () => {
+      post.style.transform = 'rotateZ(0.5deg)';
+      post.querySelector('.repo-image').style.transform = 'scale(1.1)';
+  });
+  
+  post.addEventListener('mouseout', () => {
+      post.style.transform = 'rotateZ(0deg)';
+      post.querySelector('.repo-image').style.transform = 'scale(1)';
+  });
+});
