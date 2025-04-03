@@ -104,25 +104,14 @@
             <button class="feed-tab" data-feed="github">GitHub</button>
         </div>
         <div id="instagramFeed" class="feed-content active">
+            <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
             <script src="https://static.elfsight.com/platform/platform.js" async></script>
             <div class="elfsight-app-52bf3d4a-02a1-4025-8bb8-0e7a4c9ab25b" data-elfsight-app-lazy></div>
-<!--             <div class="feed-item"><img src="https://via.placeholder.com/150" alt="Instagram Post"></div>
-            <div class="feed-item"><img src="https://via.placeholder.com/150" alt="Instagram Post"></div>
-            <div class="feed-item"><img src="https://via.placeholder.com/150" alt="Instagram Post"></div> -->
-        </div>
         <div id="githubFeed" class="feed-content">
-            <div class="feed-item">
-                <h3>Repo 1</h3>
-                <p>Deskripsi singkat Repo 1.</p>
+            <div class="feed-loader">
+                <i class="fas fa-spinner fa-spin"></i> Initializing repository scan...
             </div>
-            <div class="feed-item">
-                <h3>Repo 2</h3>
-                <p>Deskripsi singkat Repo 2.</p>
-            </div>
-            <div class="feed-item">
-                <h3>Repo 3</h3>
-                <p>Deskripsi singkat Repo 3.</p>
-            </div>
+            
         </div>
     </section>
 
@@ -130,7 +119,8 @@
     <section id="social">
         <h2>Find Me on Social Media</h2>
         <div>
-            <a href="https://www.linkedin.com/in/jean-paul-denata-663523223/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/jean-paul-denata-663523223/" target="_blank"><i
+                    class="fab fa-linkedin"></i></a>
             <a href="https://github.com/2denata" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://www.instagram.com/denatajp" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
@@ -149,20 +139,14 @@
     </section>
 
     <!-- Modal Structure -->
-    <!-- <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modalBody"></div>
-        </div>
-    </div> -->
     <div id="modal" class="modal">
         <div class="modal-content">
-          <span class="close" onclick="closeModal()">&times;</span>
-          <div id="modalBody" class="modal-body">
-            <!-- Isi modal akan disuntikkan via JavaScript -->
-          </div>
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody" class="modal-body">
+                <!-- Isi modal akan disuntikkan via JavaScript -->
+            </div>
         </div>
-      </div>
+    </div>
 
     <!-- Back-to-Top Button -->
     <button id="backToTop" class="hidden" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
