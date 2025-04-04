@@ -575,3 +575,40 @@ header {
 .repo-link i {
     margin-right: 8px;
 }
+
+
+/* TAMBAHAN DULU  */
+#social div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Menggunakan gap untuk spacing yang konsisten */
+}
+
+#social a {
+    margin: 0; /* Hapus margin horizontal */
+    font-size: 2em;
+    flex-shrink: 1; /* Memungkinkan ikon menyusut jika diperlukan */
+}
+
+/* Pastikan semua ikon memiliki ukuran yang konsisten */
+#social a i {
+    font-size: 1em !important;
+}
+
+@media (max-width: 768px) {
+    #social div {
+        gap: 12px; /* Kurangi jarak antar ikon di mobile */
+    }
+    
+    #social a {
+        font-size: 1.6em; /* Sesuaikan ukuran ikon untuk mobile */
+    }
+    
+    /* Opsi alternatif untuk layar sangat kecil */
+    @media (max-width: 480px) {
+        #social a {
+            font-size: 1.4em;
+        }
+    }
+}
