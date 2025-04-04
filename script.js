@@ -34,7 +34,7 @@ function openModal(type) {
         <p class="modal-description">
           Implementation of blockchain transaction mechanism in Delay-Tolerant Network (DTN) with simulation of miner node, proxy operator, home, collector, and internet. The system is designed to handle transactions, block mining, consensus verification, and integration into the main blockchain in an environment with intermittent connections.
         </p>
-        <a href="https://github.com/2denata/localchain" class="modal-btn" target="_blank">
+        <a href="https://github.com/denatajp/localchain" class="modal-btn" target="_blank">
           <i class="fab fa-github"></i> Find on Github
         </a>
       `;
@@ -45,7 +45,7 @@ function openModal(type) {
         <p class="modal-description">
           Fusion is an information system website designed for music studio management, featuring studio reservation, schedule management, instrument booking, and customer data management.
         </p>
-        <a href="https://github.com/2denata/fusion" class="modal-btn" target="_blank">
+        <a href="https://github.com/denatajp/fusion" class="modal-btn" target="_blank">
           <i class="fab fa-github"></i> Find on Github
         </a>
       `;
@@ -56,7 +56,7 @@ function openModal(type) {
         <p class="modal-description">
           This project implements a Convolutional Neural Network (CNN) to classify images of cats, dogs, and tigers using TensorFlow and Keras, with image augmentation techniques to enhance performance.
         </p>
-        <a href="https://github.com/2denata/Animal-CNN-Classifier" class="modal-btn" target="_blank">
+        <a href="https://github.com/denatajp/Animal-CNN-Classifier" class="modal-btn" target="_blank">
           <i class="fab fa-github"></i> Find on Github
         </a>
       `;
@@ -120,7 +120,7 @@ async function loadGitHubRepos() {
   const feedContainer = document.getElementById('githubFeed');
   
   try {
-      const response = await fetch('https://api.github.com/users/2denata/repos?sort=updated&per_page=20');
+      const response = await fetch('https://api.github.com/users/denatajp/repos?sort=updated&per_page=20');
       
       if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       
