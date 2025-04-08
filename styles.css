@@ -612,3 +612,43 @@ header {
         }
     }
 }
+
+
+/* Running text */
+/* Tambahkan di styles.css */
+#typed-text {
+    position: relative;
+    color: var(--matrix-green);
+    line-height: 1.6;
+    min-height: 96px; /* Sesuaikan dengan tinggi teks */
+}
+
+#typed-text.typing::after {
+    content: '';
+    position: absolute;
+    right: -0.5em;
+    bottom: 2px;
+    width: 10px;
+    height: 1.2em;
+    background: var(--neon-blue);
+    box-shadow: 0 0 10px var(--neon-blue);
+    animation: cyber-blink 0.8s step-end infinite;
+}
+
+@keyframes cyber-blink {
+    from, to { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Untuk efek glitch tambahan */
+/* @keyframes text-glitch {
+    0% { text-shadow: 0.05em 0 0 rgba(255,0,0,.75); }
+    49% { text-shadow: 0.05em 0 0 rgba(255,0,0,.75); }
+    50% { text-shadow: -0.05em -0.05em 0 rgba(0,255,0,.75); }
+    99% { text-shadow: -0.05em -0.05em 0 rgba(0,255,0,.75); }
+    100% { text-shadow: 0.05em 0 0 rgba(0,0,255,.75); }
+} */
+
+#typed-text {
+    animation: text-glitch 3s infinite;
+}

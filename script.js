@@ -208,26 +208,41 @@ document.querySelectorAll('.repo-post').forEach(post => {
     });
 });
 
+// running text
+// Tambahkan di script.js
+function initTypewriter() {
+    const text = `A Computer Science student at Sanata Dharma University with a strong focus on Networking, particularly
+    Delay Tolerant Networks. Passionate about exploring new programming languages and diverse work
+    environments to broaden technical expertise and adaptability`;
+    
+    const element = document.getElementById('typed-text');
+    let i = 0;
+    const speed = 30;
+    const glitchChance = 0.05; // 5% chance untuk efek glitch
 
-// EMAILJS
-// Inisialisasi EmailJS dengan User ID kamu
-// (function () {
-//     emailjs.init("U8zIGesCb19VBaVaD"); // Ganti YOUR_USER_ID dengan user ID EmailJS kamu
-// })();
+    function typeWriter() {
+        if (i < text.length) {
+            // Tambahkan efek glitch acak
+            if(Math.random() < glitchChance) {
+                element.innerHTML = text.substring(0, i) 
+                    + `<span style="color:${Math.random() < 0.5 ? '#f0f' : '#0ff'}">${text.charAt(i)}</span>`;
+            } else {
+                element.innerHTML = text.substring(0, i + 1);
+            }
+            
+            i++;
+            setTimeout(typeWriter, speed + Math.random() * 20); // Variasi kecepatan
+        } else {
+            element.classList.remove('typing'); // Hentikan cursor
+        }
+    }
+    
+    // Mulai setelah 1 detik untuk efek dramatis
+    setTimeout(typeWriter, 1000);
+}
 
-// const formResponse = document.getElementById('formResponse');
-
-// // Tangani event submit dari form
-// document.getElementById('contactForm').addEventListener('submit', function (e) {
-//     e.preventDefault(); // Mencegah reload halaman
-//     // Kirim form menggunakan emailjs.sendForm
-//     emailjs.sendForm('service_qm20k9b', 'template_8xbud3c', this)
-//         .then(function () {
-//             // alert('Pesan terkirim!');
-//             formResponse.textContent = 'Your message has been sent!';
-//         }, function (error) {
-//             // alert('Gagal mengirim pesan, silahkan coba lagi.');
-//             formResponse.textContent = 'Failed to send message, please try again.';
-//             console.error('Error:', error);
-//         });
-// });
+// Panggil di DOMContentLoaded
+window.addEventListener('DOMContentLoaded', () => {
+    initTypewriter();
+    // ... kode lain yang sudah ada
+});
