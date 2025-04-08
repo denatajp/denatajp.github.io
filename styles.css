@@ -805,3 +805,16 @@ header {
     20%, 60% { transform: translateX(-5px); }
     40%, 80% { transform: translateX(5px); }
   }
+
+  /* styles.css */
+@keyframes glitch {
+    0% { text-shadow: 1px 0 red; }
+    25% { text-shadow: -1px 0 cyan; }
+    50% { transform: skew(5deg); }
+    100% { text-shadow: 0 0 white; }
+}
+
+.system-alert {
+    animation: glitch 0.5s infinite;
+    color: #ff5555 !important;
+}
