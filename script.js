@@ -214,7 +214,7 @@ function initTypewriter() {
     const text = `A Computer Science student at Sanata Dharma University with a strong focus on Networking, particularly
     Delay Tolerant Networks. Passionate about exploring new programming languages and diverse work
     environments to broaden technical expertise and adaptability`;
-    
+
     const element = document.getElementById('typed-text');
     let i = 0;
     const speed = 30;
@@ -223,20 +223,20 @@ function initTypewriter() {
     function typeWriter() {
         if (i < text.length) {
             // Tambahkan efek glitch acak
-            if(Math.random() < glitchChance) {
-                element.innerHTML = text.substring(0, i) 
+            if (Math.random() < glitchChance) {
+                element.innerHTML = text.substring(0, i)
                     + `<span style="color:${Math.random() < 0.5 ? '#f0f' : '#0ff'}">${text.charAt(i)}</span>`;
             } else {
                 element.innerHTML = text.substring(0, i + 1);
             }
-            
+
             i++;
             setTimeout(typeWriter, speed + Math.random() * 20); // Variasi kecepatan
         } else {
             element.classList.remove('typing'); // Hentikan cursor
         }
     }
-    
+
     // Mulai setelah 1 detik untuk efek dramatis
     setTimeout(typeWriter, 1000);
 }
@@ -244,5 +244,82 @@ function initTypewriter() {
 // Panggil di DOMContentLoaded
 window.addEventListener('DOMContentLoaded', () => {
     initTypewriter();
-    // ... kode lain yang sudah ada
+});
+
+
+/* Terminal */
+// Terminal Logic
+// Perbaikan clear command dan toggle terminal
+// Toggle class untuk mengubah tampilan terminal saat header diklik
+document.querySelector('.terminal-header').addEventListener('click', function () {
+    const terminal = document.querySelector('.cyber-terminal');
+    terminal.classList.toggle('expanded');
+    terminal.classList.toggle('collapsed');
+});
+
+const output = document.getElementById('terminal-output');
+
+const commands = {
+    help: () => `Available commands: <br>
+        - bio: Show profile <br>
+        - projects: List projects <br>
+        - social: Show social links <br>
+        - cls: Reset terminal`,
+
+    bio: () => window.location.hash = '#profile',
+    projects: () => window.location.hash = '#projects',
+    social: () => window.location.hash = '#social',
+    cls: () => {
+        output.innerHTML = '';
+        return null;
+    }
+};
+
+document.getElementById('terminal-cmd').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        const cmd = e.target.value.toLowerCase();
+        // Menampilkan perintah yang diketik
+        output.innerHTML += `> ${cmd}<br>`;
+
+        // Jika perintah cls, eksekusi tanpa menambahkan hasil apa-apa ke output
+        if (cmd === 'cls') {
+            commands[cmd]?.();
+        } else {
+            // Eksekusi fungsi perintah dan tampilkan hasilnya,
+            // fallback ke "Command not recognized" jika tidak ditemukan
+            const result = commands[cmd]?.();
+            output.innerHTML += (result || 'Command not recognized') + '<br>';
+        }
+
+        // Mengatur scroll terminal agar otomatis ke bagian bawah
+        output.scrollTop = output.scrollHeight;
+        // Mengosongkan input setelah enter ditekan
+        e.target.value = '';
+    }
+});
+
+// menonaktifkan copy paste
+const terminalInput = document.getElementById('terminal-cmd');
+
+// Blokir aksi copy-paste
+terminalInput.addEventListener('paste', e => e.preventDefault());
+terminalInput.addEventListener('copy', e => e.preventDefault());
+terminalInput.addEventListener('cut', e => e.preventDefault());
+
+// Blokir klik kanan
+terminalInput.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    return false;
+});
+
+// Blokir drag-drop
+terminalInput.addEventListener('dragstart', e => e.preventDefault());
+terminalInput.addEventListener('drop', e => e.preventDefault());
+
+// Validasi input real-time
+terminalInput.addEventListener('input', function (e) {
+    // Jika ada karakter yang tidak diinginkan dari paste
+    if (this.value.match(/[^a-zA-Z0-9\s]/g)) {
+        this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');
+    }
 });

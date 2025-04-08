@@ -21,6 +21,8 @@ body {
     scroll-behavior: smooth;
 }
 
+
+
 /* --- Background Matrix Rain --- */
 .matrix-bg {
     position: fixed;
@@ -94,13 +96,17 @@ body {
 /* Tampilkan menu sebagai scroll horizontal di mobile */
 @media (max-width: 768px) {
     .navbar ul {
-        overflow-x: auto; /* Aktifkan scroll horizontal */
-        white-space: nowrap; /* Pastikan item navbar tidak membungkus ke baris baru */
-        -webkit-overflow-scrolling: touch; /* Scroll yang halus di perangkat touch */
+        overflow-x: auto;
+        /* Aktifkan scroll horizontal */
+        white-space: nowrap;
+        /* Pastikan item navbar tidak membungkus ke baris baru */
+        -webkit-overflow-scrolling: touch;
+        /* Scroll yang halus di perangkat touch */
     }
-    
+
     .navbar ul li {
-        display: inline-block; /* Pastikan setiap item berada dalam satu baris */
+        display: inline-block;
+        /* Pastikan setiap item berada dalam satu baris */
     }
 }
 
@@ -134,8 +140,10 @@ header {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    background: rgba(255, 255, 255, 0.03);
+    /* background: rgba(255, 255, 255, 0.03); */
 }
+
+
 
 .profile-photo img {
     width: 200px;
@@ -253,7 +261,7 @@ header {
 #feed {
     padding: 50px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.03);
+    /* background: rgba(255, 255, 255, 0.03); */
 }
 
 #feed h2 {
@@ -378,6 +386,7 @@ header {
     border-radius: 10px;
     animation: scaleIn 0.5s;
 }
+
 .modal-body {
     text-align: center;
     padding: 20px;
@@ -582,13 +591,16 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* Menggunakan gap untuk spacing yang konsisten */
+    gap: 20px;
+    /* Menggunakan gap untuk spacing yang konsisten */
 }
 
 #social a {
-    margin: 0; /* Hapus margin horizontal */
+    margin: 0;
+    /* Hapus margin horizontal */
     font-size: 2em;
-    flex-shrink: 1; /* Memungkinkan ikon menyusut jika diperlukan */
+    flex-shrink: 1;
+    /* Memungkinkan ikon menyusut jika diperlukan */
 }
 
 /* Pastikan semua ikon memiliki ukuran yang konsisten */
@@ -598,13 +610,15 @@ header {
 
 @media (max-width: 768px) {
     #social div {
-        gap: 12px; /* Kurangi jarak antar ikon di mobile */
+        gap: 12px;
+        /* Kurangi jarak antar ikon di mobile */
     }
-    
+
     #social a {
-        font-size: 1.6em; /* Sesuaikan ukuran ikon untuk mobile */
+        font-size: 1.6em;
+        /* Sesuaikan ukuran ikon untuk mobile */
     }
-    
+
     /* Opsi alternatif untuk layar sangat kecil */
     @media (max-width: 480px) {
         #social a {
@@ -620,7 +634,8 @@ header {
     position: relative;
     color: var(--matrix-green);
     line-height: 1.6;
-    min-height: 96px; /* Sesuaikan dengan tinggi teks */
+    min-height: 96px;
+    /* Sesuaikan dengan tinggi teks */
 }
 
 #typed-text.typing::after {
@@ -636,19 +651,157 @@ header {
 }
 
 @keyframes cyber-blink {
-    from, to { opacity: 0; }
-    50% { opacity: 1; }
-}
 
-/* Untuk efek glitch tambahan */
-/* @keyframes text-glitch {
-    0% { text-shadow: 0.05em 0 0 rgba(255,0,0,.75); }
-    49% { text-shadow: 0.05em 0 0 rgba(255,0,0,.75); }
-    50% { text-shadow: -0.05em -0.05em 0 rgba(0,255,0,.75); }
-    99% { text-shadow: -0.05em -0.05em 0 rgba(0,255,0,.75); }
-    100% { text-shadow: 0.05em 0 0 rgba(0,0,255,.75); }
-} */
+    from,
+    to {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
 
 #typed-text {
     animation: text-glitch 3s infinite;
 }
+
+/* Header terminal */
+/* Terminal Style */
+.cyber-terminal {
+    background: rgba(0, 30, 0, 0.9);
+    border: 2px solid #0f0;
+    padding: 1rem;
+    margin: 20px auto;
+    width: 70%;
+    font-family: 'Courier New', monospace;
+    max-height: 40px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.terminal-header {
+    color: #0f0;
+    border-bottom: 1px solid #0f0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.led {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #f00;
+    border-radius: 50%;
+    margin-right: 5px;
+    animation: led-pulse 1s infinite;
+}
+
+#terminal-output {
+    height: 150px;
+    overflow-y: auto;
+    color: #0f0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.terminal-input input {
+    background: transparent;
+    border: none;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    width: 90%;
+    width: calc(100% - 20px);
+    outline: none;
+    /* Ini yang menghilangkan border saat focus */
+    caret-color: #0f0;
+    /* Warna kursor ketik */
+}
+
+/* Untuk browser tertentu yang masih menampilkan outline */
+.terminal-input input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+
+.terminal-input input::-moz-focus-inner {
+    border: 0;
+  }
+
+.terminal-input input,
+.terminal-input input:focus,
+.terminal-input input:active,
+.terminal-input input:hover {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.terminal-input input::-webkit-search-decoration,
+.terminal-input input::-webkit-search-cancel-button,
+.terminal-input input::-webkit-search-results-button,
+.terminal-input input::-webkit-search-results-decoration {
+  display: none;
+}
+
+/* Menghilangkan highlight di mobile */
+.terminal-input input,
+.terminal-input input:focus {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+@keyframes led-pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.cyber-terminal.collapsed {
+    max-height: 40px;
+}
+
+.cyber-terminal.expanded {
+    max-height: 300px;
+}
+
+.terminal-body {
+    display: none;
+}
+
+.cyber-terminal.expanded .terminal-body {
+    display: block;
+}
+
+#terminal-output::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+/* Antisiapsi copy paste */
+#terminal-cmd {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  
+  /* Efek visual saat mencoba paste */
+  #terminal-cmd:active {
+    animation: deny-paste 0.3s;
+  }
+  
+  @keyframes deny-paste {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+  }

@@ -40,18 +40,13 @@
         <h1 class="cyber-title">DENATA</h1>
         <p class="cyber-subtitle">// Networking Enthusiast</p>
     </header>
+    <!-- Header -->
 
     <!-- Profile Section (Foto Formal) -->
     <section id="profile">
         <div class="profile-photo">
             <img src="/img/pp.jpg" alt="Foto Formal">
         </div>
-        <!-- <div class="profile-info">
-            <h2>Jean Paul Denata</h2>
-            <p>A Computer Science student at Sanata Dharma University with a strong focus on Networking, particularly
-                Delay Tolerant Networks. Passionate about exploring new programming languages and diverse work
-                environments to broaden technical expertise and adaptability</p>
-        </div> -->
         <div class="profile-info">
             <h2>Jean Paul Denata</h2>
             <p id="typed-text" class="typing"></p>
@@ -105,15 +100,15 @@
     <section id="feed">
         <h2>Social Feed</h2>
         <div class="feed-tabs">
-            <button class="feed-tab active" data-feed="instagram">Instagram</button>
-            <button class="feed-tab" data-feed="github">GitHub</button>
+            <button class="feed-tab" data-feed="instagram">Instagram</button>
+            <button class="feed-tab active" data-feed="github">GitHub</button>
         </div>
-        <div id="instagramFeed" class="feed-content active">
+        <div id="instagramFeed" class="feed-content">
             <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
             <script src="https://static.elfsight.com/platform/platform.js" async></script>
             <div class="elfsight-app-52bf3d4a-02a1-4025-8bb8-0e7a4c9ab25b" data-elfsight-app-lazy></div>
         </div>
-        <div id="githubFeed" class="feed-content">
+        <div id="githubFeed" class="feed-content active">
             <div class="feed-loader">
                 <i class="fas fa-spinner fa-spin"></i> Initializing repository scan...
             </div>
@@ -147,6 +142,23 @@
         <div id="formResponse" style="margin-top:20px;"></div>
     </section>
 
+    <section id="terminal">
+        <div class="cyber-terminal collapsed">
+            <div class="terminal-header">
+                <span class="led"></span>
+                > SYSTEM TERMINAL v2.3.1
+            </div>
+            <div class="terminal-body">
+                <div id="terminal-output"></div>
+                <div class="terminal-input">
+                    > <input type="text" id="terminal-cmd" placeholder="type 'help' for commands" autocomplete="off"
+                        autocorrect="off" autocapitalize="off" spellcheck="false" onpaste="return false"
+                        oncopy="return false" oncut="return false">
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Modal Structure -->
     <div id="modal" class="modal">
@@ -165,13 +177,13 @@
     <script type="text/javascript">
 
         (function () {
-            emailjs.init("U8zIGesCb19VBaVaD"); 
+            emailjs.init("U8zIGesCb19VBaVaD");
         })();
 
         const formResponse = document.getElementById('formResponse');
 
         document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault(); 
+            e.preventDefault();
             emailjs.sendForm('service_qm20k9b', 'template_8xbud3c', this)
                 .then(function () {
                     // alert('Pesan terkirim!');
