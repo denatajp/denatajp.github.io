@@ -441,6 +441,7 @@ const commands = {
                     if (progress >= 100) {
                         clearInterval(scanInterval);
                         output.innerHTML += '✅ Scan completed!<br>';
+                        output.scrollTop = output.scrollHeight;
                     }
                 }, 100);
 
@@ -455,15 +456,9 @@ const commands = {
                     { text: "Stopping services", progress: 50, delay: 2000 },
                     { text: "Unmounting partitions", progress: 75, delay: 3000 },
                     { text: "Booting cybernetic core", progress: 100, delay: 4000 },
-                    // { text: "System ready in", delay: 5000 },
-                    // { text: "3...", delay: 6000 },
-                    // { text: "2...", delay: 7000 },
-                    // { text: "1...", delay: 8000 },
-                    // { text: "✅ SYSTEM READY", delay: 9000 }
                 ];
 
                 // Tampilkan perintah reboot di terminal
-                // output.innerHTML += "> system reboot<br>";
                 output.innerHTML += "Initiating reboot sequence...<br>";
 
                 setTimeout(() => {
@@ -492,18 +487,23 @@ const commands = {
                 setTimeout(() => {}, 1000); // Delay untuk menunggu sebelum menampilkan pesan "System ready in..."
                 setTimeout(() => {
                     output.innerHTML += "System ready in<br>";
+                    output.scrollTop = output.scrollHeight;
                 }, 5000);
                 setTimeout(() => {
                     output.innerHTML += "3...<br>";
+                    output.scrollTop = output.scrollHeight;
                 }, 6000);   
                 setTimeout(() => {
                     output.innerHTML += "2...<br>";
+                    output.scrollTop = output.scrollHeight;
                 }, 7000);
                 setTimeout(() => {
                     output.innerHTML += "1...<br>";
+                    output.scrollTop = output.scrollHeight;
                 }, 8000);
                 setTimeout(() => {
                     output.innerHTML += "✅ SYSTEM READY<br>";
+                    output.scrollTop = output.scrollHeight;
                 }, 9000);
                 return "";
             }
