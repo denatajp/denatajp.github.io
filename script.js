@@ -395,155 +395,13 @@ function clearAllAnimations() {
     activeTimeouts = [];
 }
 
-// const commands = {
-//   help: () => `Available commands:<br>
-//     - system status: Live system monitor<br>
-//     - system scan: Network scanner<br>
-//     - system reboot: Initiate reboot sequence<br>
-//     - cls: Clear terminal`,
-
-//   system: (arg) => {
-//     clearAllAnimations();
-
-//     const subCommands = {
-//       status: () => {
-//         let refreshCount = 0;
-//         const updateStatus = () => {
-//           const status = `🖥️ LIVE SYSTEM MONITOR<br>
-//             RAM:  ${progressBar(40 + Math.sin(Date.now()/1000)*30, 20)} ${(40 + Math.sin(Date.now()/1000)*30).toFixed(1)}%<br>
-//             CPU:  ${progressBar(50 + Math.cos(Date.now()/800)*30, 20)} ${(50 + Math.cos(Date.now()/800)*30).toFixed(1)}%<br>
-//             NET:  ↑${(2 + Math.random()*3).toFixed(1)}Gbps ↓${(1 + Math.random()*2).toFixed(1)}Gbps<br>
-//             TEMP: ${(30 + Math.random()*20).toFixed(1)}°C`;
-
-//           output.innerHTML = output.innerHTML.replace(/🖥️ LIVE SYSTEM MONITOR(.|\n)*?°C/, status);
-//           output.scrollTop = output.scrollHeight;
-
-//           if (refreshCount++ > 30) clearInterval(interval);
-//         };
-
-//         const interval = setInterval(updateStatus, 300);
-//         activeIntervals.push(interval);
-//         return updateStatus();
-//       },
-
-//       scan: () => {
-//         let progress = 0;
-//         const scanInterval = setInterval(() => {
-//           progress += 2;
-//           const bar = `[${'█'.repeat(progress/5)}${'░'.repeat(20 - progress/5)}] ${progress}%`;
-//           output.innerHTML = output.innerHTML.replace(/\[.*\] \d+%/, bar);
-
-//           if (progress >= 100) {
-//             clearInterval(scanInterval);
-//             output.innerHTML += '<br>✅ Scan completed!';
-//           }
-//         }, 100);
-
-//         activeIntervals.push(scanInterval);
-//         return '🔍 Initializing network scan...<br>[░░░░░░░░░░░░░░░░░░░░] 0%';
-//       },
-
-//       reboot: () => {
-//         const phases = [
-//           "Initializing reboot sequence...",
-//           "Saving system state █░░░░░░░░░ 10%",
-//           "Stopping services ████░░░░░░ 40%",
-//           "Unmounting partitions ██████░░ 60%",
-//           "💻 Booting cybernetic core...",
-//           "System ready in 3... 2... 1..."
-//         ];
-
-//         phases.forEach((phase, i) => {
-//           const timeout = setTimeout(() => {
-//             output.innerHTML = output.innerHTML.replace(/reboot(.|\n)*?1\.\.\./, phase);
-//             output.scrollTop = output.scrollHeight;
-//           }, i * 1000);
-//           activeTimeouts.push(timeout);
-//         });
-
-//         return "🚀 Starting secure reboot...";
-//       }
-//     };
-
-//     return subCommands[arg]?.() || 'Invalid system command';
-//   },
-
-//   cls: () => {
-//     clearAllAnimations();
-//     output.innerHTML = '';
-//   }
-// };
-
-// // Event listener untuk input terminal
-// document.getElementById('terminal-cmd').addEventListener('keypress', (e) => {
-//   if (e.key === 'Enter') {
-//     const [baseCmd, ...args] = e.target.value.trim().split(' ');
-//     const command = baseCmd.toLowerCase();
-
-//     output.innerHTML += `> ${e.target.value}<br>`;
-//     e.target.value = '';
-
-//     if (command === 'system' && args.length > 0) {
-//       output.innerHTML += commands.system(args[0]) + '<br>';
-//     } else if (commands[command]) {
-//       output.innerHTML += commands[command](...args) + '<br>';
-//     } else {
-//       output.innerHTML += 'Command not recognized<br>';
-//     }
-
-//     output.scrollTop = output.scrollHeight;
-//   }
-// });
-
-// // Generate progress bar
-// function progressBar(percent, length) {
-//     const filled = '█'.repeat(Math.round(percent / 100 * length));
-//     const empty = '░'.repeat(length - filled.length);
-//     return filled + empty;}
-
-// function randSpeed() {
-//     return (Math.random() * 10).toFixed(1) + 'Gbps';}
-
-// function randSecurityStatus() {
-//     const status = ['🔒 Secure', '⚠️ Warning', '🔓 Vulnerable'];
-//     return status[Math.floor(Math.random() * status.length)];}
-
-// function randTemp() {
-//     return (30 + Math.random() * 20).toFixed(1) + '°C';}
-
-// document.getElementById('terminal-cmd').addEventListener('keypress', (e) => {
-//     if (e.key === 'Enter') {
-//         const input = e.target.value.trim();
-//         const parts = input.split(' ');
-//         const cmd = parts[0].toLowerCase();
-//         const arg = parts[1] ? parts[1].toLowerCase() : null;
-
-//         output.innerHTML += `> ${input}<br>`;
-
-//         if (cmd === 'cls') {
-//             commands[cmd]?.();
-//         } else {
-//             // Handle commands with arguments
-//             let result;
-//             if (arg && typeof commands[cmd] === 'function') {
-//                 result = commands[cmd](arg); // Pass argument to command
-//             } else {
-//                 result = commands[cmd]?.(); // Execute without argument
-//             }
-//             output.innerHTML += (result || 'Command not recognized') + '<br>';
-//         }
-
-//         output.scrollTop = output.scrollHeight;
-//         e.target.value = '';
-//     }
-// });
 // Perbaikan commands object
 const commands = {
     help: () => `Available commands:<br>
-      - system status: Live system monitor<br>
-      - system scan: Network scanner<br>
-      - system reboot: Initiate reboot sequence<br>
-      - cls: Clear terminal`,
+       &nbsp; - system status: Live system monitor<br>
+       &nbsp; - system scan: Network scanner<br>
+       &nbsp; - system reboot: Initiate reboot sequence<br>
+       &nbsp; - cls: Clear terminal`,
 
     system: (arg) => {
         clearAllAnimations();
@@ -590,40 +448,6 @@ const commands = {
                 return '🔍 Initializing network scan...<br>[░░░░░░░░░░░░░░░░░░░░] 0%';
 
             },
-
-            // reboot: () => {
-            //     const phases = [
-            //         { text: "🚀 Starting secure reboot...", delay: 0 },
-            //         { text: "Saving system state", progress: 10, delay: 1000 },
-            //         { text: "Stopping services", progress: 40, delay: 2000 },
-            //         { text: "Unmounting partitions", progress: 60, delay: 3000 },
-            //         { text: "Booting cybernetic core", progress: 80, delay: 4000 },
-            //         { text: "System ready in", delay: 5000 },
-            //         { text: "3...", delay: 6000 },
-            //         { text: "2...", delay: 7000 },
-            //         { text: "1...", delay: 8000 },
-            //         { text: "✅ SYSTEM READY", delay: 9000 }
-            //     ];
-
-            //     // Tampilkan pesan awal
-            //     // output.innerHTML += "> system reboot<br>";
-            //     output.innerHTML += "Initiating reboot sequence...<br>";
-
-            //     phases.forEach(phase => {
-            //         const timeout = setTimeout(() => {
-            //             if (phase.progress !== undefined) {
-            //                 const bar = progressBar(phase.progress, 20);
-            //                 output.innerHTML += `${bar} ${phase.text} (${phase.progress}%)<br>`;
-            //             } else {
-            //                 output.innerHTML += `${phase.text}<br>`;
-            //             }
-            //             output.scrollTop = output.scrollHeight;
-            //         }, phase.delay);
-            //         activeTimeouts.push(timeout);
-            //     });
-
-            //     return ""; // Return kosong karena output sudah dihandle di phases
-            // }
 
             reboot: () => {
                 const phases = [
